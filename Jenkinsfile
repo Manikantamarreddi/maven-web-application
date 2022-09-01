@@ -9,7 +9,7 @@ pipeline {
         stage("ExecuteSonarQubeReport"){
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: '0b1ef999ad6e8a6ad54d336f0024dccd81470a15') {
+                    withSonarQubeEnv('SonarQube') {
                      sh "mvn sonar:sonar"
                     }
                 }
