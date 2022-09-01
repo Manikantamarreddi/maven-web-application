@@ -6,7 +6,7 @@ pipeline {
 }
 
     stages{
-        stage(ExecuteSonarQubeReport){
+        stage("ExecuteSonarQubeReport"){
             steps{
                 script{
                     withSonarQubeEnv('SonarQube') {
