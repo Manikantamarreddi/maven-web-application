@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    version = "${BUILD_NUMBER}"
+
     tools {
   maven 'Maven'
 }
@@ -32,6 +34,21 @@ options {
                         print "Quality Gate check is successful ${qg.status}. Procees to next stage"
                     } 
                     }
+                }
+            }
+        }
+
+        stage("Docker build & Docker push"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'Nexus', variable: 'Nexus')]) {
+                        sh '''
+                          docker build -t 43.205.127.177:8083/mavenwebapplication:${version} .
+                          docker login -u admin -p $Nexus 43.205.127.177:8083
+                          docker push 43.205.127.177:8083/mavenwebapplication:${version}
+                          docker rmi 43.205.127.177:8083/mavenwebapplication:${version}
+                        '''
+                     }
                 }
             }
         }
