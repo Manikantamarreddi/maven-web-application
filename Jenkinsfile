@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    version = "${BUILD_NUMBER}"
+    version = ${BUILD_NUMBER}
 
     tools {
   maven 'Maven'
