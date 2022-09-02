@@ -1,8 +1,6 @@
 pipeline {
     agent any
 
-    version = ${BUILD_NUMBER}
-
     tools {
   maven 'Maven'
 }
@@ -43,10 +41,10 @@ options {
                 script{
                     withCredentials([string(credentialsId: 'Nexus', variable: 'Nexus')]) {
                         sh '''
-                          docker build -t 43.205.127.177:8083/mavenwebapplication:${version} .
+                          docker build -t 43.205.127.177:8083/mavenwebapplication:${BUILD_NUMBER} .
                           docker login -u admin -p $Nexus 43.205.127.177:8083
-                          docker push 43.205.127.177:8083/mavenwebapplication:${version}
-                          docker rmi 43.205.127.177:8083/mavenwebapplication:${version}
+                          docker push 43.205.127.177:8083/mavenwebapplication:${BUILD_NUMBER}
+                          docker rmi 43.205.127.177:8083/mavenwebapplication:${BUILD_NUMBER}
                         '''
                      }
                 }
