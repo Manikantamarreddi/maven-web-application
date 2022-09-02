@@ -5,6 +5,10 @@ pipeline {
   maven 'Maven'
 }
 
+options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
+}
+
     stages{
         stage("ExecuteSonarQubeReport"){
             steps{
