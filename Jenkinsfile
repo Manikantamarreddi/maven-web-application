@@ -47,6 +47,7 @@ options {
                         '''
                 }
             }
+        }
 
             stage("Datree Validation"){
                 steps{
@@ -55,6 +56,5 @@ options {
                     }
                 }
             }
-        }
     }
 }
