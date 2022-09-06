@@ -55,7 +55,7 @@ options {
                 steps{
                     script{
                         dir('hemcharts/'){
-                        sh 'helm datree test .'
+                        sh 'datree test .'
                         }
                     }
                 }
