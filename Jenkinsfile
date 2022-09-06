@@ -55,9 +55,7 @@ options {
                 steps{
                     script{
                         withEnv(['DATREE_TOKEN=8fee7ca2-b945-4da2-8a0c-ae23c5529d51']){
-                            dir('helmcharts/'){
-                               sh 'datree test templates/'
-                            }
+                            sh 'datree test *.yaml --only-k8s-files'
                     }
                     }
                 }
