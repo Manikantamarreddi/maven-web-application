@@ -49,6 +49,14 @@ options {
                      }
                 }
             }
+
+            stage('Datree Validation'){
+                steps{
+                    script{
+                        sh 'helm datree test helmcharts/'
+                    }
+                }
+            }
         }
     }
 }
