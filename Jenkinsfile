@@ -54,8 +54,9 @@ options {
             stage("Datree Validation"){
                 steps{
                     script{
-                        dir('hemcharts/')
+                        dir('hemcharts/'){
                         sh 'helm datree test .'
+                        }
                     }
                 }
             }
