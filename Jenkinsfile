@@ -60,5 +60,13 @@ options {
                     }
                 }
             }
+
+        stage("Deploying on K8's Cluster"){
+            steps{
+                script{
+                    sh 'helm upgrade --install --set image.repository="43.205.127.177:8083/mavenwebapplication" --set image.tag="${BUILD_NUMBER}" mavenwebapplication helmcharts/ '
+                }
+            }
+        }
     }
 }
