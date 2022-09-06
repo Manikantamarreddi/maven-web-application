@@ -55,7 +55,9 @@ options {
                 steps{
                     script{
                         withEnv(['DATREE_TOKEN=8fee7ca2-b945-4da2-8a0c-ae23c5529d51']){
-                        sh 'datree test helmcharts/'
+                            dir('helmcharts/'){
+                               sh 'datree test templates/'
+                            }
                     }
                     }
                 }
