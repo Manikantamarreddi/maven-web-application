@@ -38,7 +38,6 @@ options {
 
         stage("Docker build & Docker push"){
             steps{
-                script{
                     withCredentials([string(credentialsId: 'Nexus', variable: 'Nexus')]) {
                         sh '''
                           docker build -t 43.205.127.177:8083/mavenwebapplication:${BUILD_NUMBER} .
@@ -46,7 +45,6 @@ options {
                           docker push 43.205.127.177:8083/mavenwebapplication:${BUILD_NUMBER}
                           docker rmi 43.205.127.177:8083/mavenwebapplication:${BUILD_NUMBER}
                         '''
-                     }
                 }
             }
 
